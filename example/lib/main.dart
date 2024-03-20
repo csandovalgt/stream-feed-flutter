@@ -78,30 +78,35 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.all(8),
                   child: ElevatedButton(
                     onPressed: () async {
+
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('Loading User'),
                         ),
                       );
+                      try {
                       final streamUser = await _client.setUser(
-                        User(
-                          id: user.id,
-                          data: user.data,
-                        ),
-                        Token(user.token),
-                      );
+                          User(
+                            id: user.id,
+                            data: user.data,
+                          ),
+                          Token(user.token),
+                        );
+                      } catch(er, stack) {
+                       // print(stack);
+                      }
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('User Loaded'),
                         ),
                       );
-                      Navigator.of(context).pushReplacement(
+                      /*Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (_) => HomeScreen(
                             currentUser: streamUser,
                           ),
                         ),
-                      );
+                      );*/
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(horizontal: 4),

@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart' hide Headers;
+import 'package:dio/dio.dart';
 import 'package:logging/logging.dart';
 import 'package:meta/meta.dart';
 import 'package:stream_feed/src/core/error/stream_feeds_dio_error.dart';
@@ -30,6 +30,7 @@ class StreamHttpClient {
         'api_key': apiKey,
         'location': this.options.group,
       }
+      ..options.contentType = Headers.jsonContentType
       ..options.headers = {
         'stream-auth-type': 'jwt',
         'x-stream-client': this.options._userAgent,
@@ -125,7 +126,8 @@ class StreamHttpClient {
           onReceiveProgress: onReceiveProgress,
           cancelToken: cancelToken);
       return response;
-    } on DioError catch (error) {
+    } on DioException catch (error, stack) {
+      print(stack);
       throw _parseError(error);
     }
   }
