@@ -134,10 +134,10 @@ class OgImage extends Equatable {
   final String? secureUrl;
 
   /// Value of the width OG field.
-  final String? width;
+  final int? width;
 
   ///	Value of the height OG field.
-  final String? height;
+  final int? height;
 
   /// Value of the type OG field.
   ///

@@ -45,8 +45,8 @@ OgImage _$OgImageFromJson(Map json) => OgImage(
       image: json['image'] as String?,
       url: json['url'] as String?,
       secureUrl: json['secure_url'] as String?,
-      width: json['width'] as String?,
-      height: json['height'] as String?,
+      width: json['width'] as int?,
+      height: json['height'] as int?,
       type: json['type'] as String?,
       alt: json['alt'] as String?,
     );
