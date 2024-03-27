@@ -18,7 +18,7 @@ dependencies:
   stream_feed:
     git:
       url: https://github.com/csandovalgt/stream-feed-flutter.git
-      ref: f99b342
+      ref: e64d1db
       path: ./packages/stream_feed
 dev_dependencies:
   flutter_test:
